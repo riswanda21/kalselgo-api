@@ -4,6 +4,8 @@ from tinydb import TinyDB, Query
 
 app = Flask(__name__)
 wisataDB = TinyDB('data/wisata.json')
+@app.route('/')
+    return "KalselGo"
 @app.route('/api/wisata/')
 def wisata_all():
     return jsonify({'status':'200',
