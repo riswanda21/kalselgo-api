@@ -2,6 +2,7 @@ from flask import Flask
 from flask import jsonify
 from tinydb import TinyDB, Query
 
+app = Flask(__name__)
 wisataDB = TinyDB('data/wisata.json')
 @app.route('/api/wisata/')
 def wisata_all():
@@ -14,3 +15,5 @@ def wisata(location):
     return jsonify({'status':'200',
                     'wisata':wisataDB.search(data.location == location)})
 
+if __name__ == '__main__':
+    app.run()
