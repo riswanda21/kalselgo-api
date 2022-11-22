@@ -5,6 +5,7 @@ from tinydb import TinyDB, Query
 app = Flask(__name__)
 wisataDB = TinyDB('data/wisata.json')
 @app.route('/')
+def home():
     return "KalselGo"
 @app.route('/api/wisata/')
 def wisata_all():
