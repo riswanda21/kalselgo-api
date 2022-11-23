@@ -22,5 +22,11 @@ def wisata(location):
     return jsonify({"status":"200",
                     "wisata":wisataDB.search(data.location == escape(location))})
 
+@app.route("/api/wisata/details/<int:id>/", methods = ["GET"])
+def wisata_details(id):
+    data = Query()
+    return jsonify({"status":"200",
+                    "wisata":wisataDB.search(data.id == id)})
+
 if __name__ == "__main__":
     app.run()
