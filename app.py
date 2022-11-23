@@ -1,6 +1,8 @@
 from flask import Flask
 from flask import jsonify
-from tinydb import TinyDB, Query
+from markupsafe import escape
+from tinydb import TinyDB
+from tinydb import Query
 
 app = Flask(__name__)
 wisataDB = TinyDB("data/wisata.json")
@@ -18,7 +20,7 @@ def wisata_all():
 def wisata(location):
     data = Query()
     return jsonify({"status":"200",
-                    "wisata":wisataDB.search(data.location == location)})
+                    "wisata":wisataDB.search(data.location == escape(location))})
 
 if __name__ == "__main__":
     app.run()
