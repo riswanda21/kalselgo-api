@@ -1,10 +1,12 @@
 from flask import Flask
 from flask import jsonify
+from flask_cors import CORS
 from markupsafe import escape
 from tinydb import TinyDB
 from tinydb import Query
 
 app = Flask(__name__)
+CORS(app)
 wisataDB = TinyDB("data/wisata.json")
 
 @app.route("/", methods = ["GET"])
